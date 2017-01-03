@@ -1,9 +1,24 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/user_test');
+mongoose.Promise = global.Promise;
 
-mongoose.connection
-  .once('open', () => console.log('Good to go!'))
-  .on('error', (error) => {
-    console.warn('Warning', error);
+//before only exec once
+//make sure it connect so we put it in before()
+before((done) => {
+  mongoose.connect('mongodb://localhost/user_test');
+
+  mongoose.connection
+    .once('open', () => { done(); })
+    .on('error', (error) => {
+      console.warn('Warning', error);
+    });
+});
+
+
+
+beforeEach((done) => {
+  mongoose.connection.collections.users.drop(() => {
+    // ready to run the next test!
+    done();
   });
+});
