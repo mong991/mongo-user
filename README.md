@@ -11,8 +11,8 @@ Master MongoDB and Mongoose design with a test-driven exercise
 
 ## Installation
 ```
-  > download and install [MongoDB community](https://www.mongodb.com/download-center?jmp=nav#community)
-  > run mongod.exe
+  download and install [MongoDB community](https://www.mongodb.com/download-center?jmp=nav#community)
+  run mongod.exe
   > git clone https://github.com/mong991/mongo-user.git
   > cd mongo-user
   > npm install
